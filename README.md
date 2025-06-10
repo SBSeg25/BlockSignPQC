@@ -1,7 +1,7 @@
 # BlockSignPQC
 
 <!-- link aqui -->
-[Vídeo de demonstração](https://youtu.be/NxxU091j2Lo)
+[Vídeo de demonstração](https://youtu.be/CNKmvOyZqm0)
 
 **BlockSignPQC** é um benchmark modular e extensível para avaliação de 
 algoritmos de assinatura digital pós-quântica (PQC) em sistemas blockchain.
@@ -220,6 +220,8 @@ Execute os experimentos descritos no artigo com o comando:
 ```bash
 ./run_experiment.sh
 ```
+
+>Os resultados completos dos experimentos utilizados no artigo estão disponíveis no diretório: [resultados-experimento](./resultados-experimento/)
 
 ## Publicação
 
