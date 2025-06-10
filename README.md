@@ -21,6 +21,7 @@ de redes blockchain por meio da integração com o simulador BlockSim.
 - [Adicionando Novos Algoritmos](#adicionando-novos-algoritmos)
 - [Reprodução dos Experimentos](#reprodução-dos-experimentos-descritos-no-artigo)
 - [Publicação](#publicação)
+- [Licença](#licença)
 
 
 ## Objetivos
@@ -225,3 +226,8 @@ Execute os experimentos descritos no artigo com o comando:
 Esta ferramenta foi submetida ao **SBSeg 2025**, como parte do artigo:
 
 > *BlockSignPQC: um benchmark para avaliação de algoritmos de assinatura digital pós-quântica em blockchains.*
+
+
+## Licença
+
+Este projeto é distribuído sob a licença MIT. Consulte o arquivo [`LICENSE`](./LICENSE) para mais detalhes.
