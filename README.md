@@ -221,7 +221,7 @@ Execute os experimentos descritos no artigo com o comando:
 ./run_experiment.sh
 ```
 
->Os resultados completos dos experimentos utilizados no artigo estão disponíveis no diretório: [resultados-experimento](./resultados-experimento/)
+>Os resultados completos dos experimentos utilizados no artigo estão disponíveis no diretório: [resultados-artigo](./resultados-artigo/)
 
 ## Publicação
 
