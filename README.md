@@ -208,7 +208,6 @@ Os experimentos são automatizados e organizados para permitir validação indep
 
 > Os resultados completos utilizados no artigo estão disponíveis no diretório: [`resultados-artigo`](./resultados-artigo/)
 
----
 
 ### Ambiente de Execução
 
@@ -224,7 +223,6 @@ Os experimentos foram realizados em duas configurações de hardware:
   - Debian GNU/Linux 12
   - 16 GB RAM
 
----
 
 ### Instalação e Preparação
 
