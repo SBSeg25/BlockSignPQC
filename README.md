@@ -214,7 +214,7 @@ Os experimentos são automatizados e organizados para permitir validação indep
 Os experimentos foram realizados em duas configurações de hardware:
 
 - **Máquina M1**
-  - AMD Ryzen 7 5800X 8-Core Processor
+  - AMD Ryzen 7 5800X
   - Ubuntu 22.04.5 LTS
   - 64 GB RAM
 
