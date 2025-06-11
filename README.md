@@ -1,6 +1,5 @@
 # BlockSignPQC
 
-<!-- link aqui -->
 [Vídeo de demonstração](https://youtu.be/CNKmvOyZqm0)
 
 **BlockSignPQC** é um benchmark modular e extensível para avaliação de 
@@ -38,16 +37,18 @@ A ferramenta é dividida em três módulos principais:
 2. **`blocksim`**: Simula redes blockchain usando os tempos coletados.
 3. **`visualization`**: Gera gráficos a partir dos dados dos dois módulos anteriores.
 
-## Diretórios
+### Diretórios e Arquivos
 ```bash
 BlockSignPQC/
 ├── algorithms/           # Implementações dos algoritmos PQC (com ALGORITHMS e time_evaluation)
 ├── BlockSim/             # Código-fonte do simulador de blockchain (BlockSim)
+├── resultados-artigo/    # Resultados completos utilizados no artigo
 ├── results/              # Resultados de execução em CSV e gráficos (não versionado)
 ├── visualization/        # Geração de gráficos a partir das execuções
 ├── venv/                 # Ambiente virtual Python (não versionado)
 ├── graph.py              # Script auxiliar de geração de gráficos
 ├── install.sh            # Script de instalação principal
+├── LICENSE/              # Licença
 ├── main.py               # Script principal que orquestra todas as etapas
 ├── README.md             # Este arquivo de documentação
 ├── requirements.txt      # Dependências Python necessárias
@@ -64,7 +65,7 @@ BlockSignPQC/
 - [liboqs](https://github.com/open-quantum-safe/liboqs)
 - [liboqs-python](https://github.com/open-quantum-safe/liboqs-python)
 
-### Instalando pré-requisitos:
+### Instalando Pré-requisitos:
 
 Conceda permissão de execução ao script de instalação usando o comando.
 ```bash
@@ -78,7 +79,7 @@ Execute o comando abaixo para instalar os pré-requisitos.
 
 >Recomenda-se utilizar a mesma versão do `liboqs` e do `liboqs-python`. Por padrão, estamos utilizando a versão `0.12.0`, definida nas variáveis no início do arquivo [install.sh](./install.sh).
 
-## Ambiente virtual
+#### Ambiente virtual
 
 Antes de executar o BlockSignPQC, é preciso ativar o ambiente virtual.
 
@@ -201,27 +202,125 @@ def time_evaluation(variant: str, runs: int):
 
 ## Reprodução dos Experimentos Descritos no Artigo
 
-Clone esse repositório.
+Esta seção apresenta o passo a passo para a reprodução dos experimentos descritos no artigo submetido ao **SBSeg 2025**.  
+Os experimentos são automatizados e organizados para permitir validação independente das principais **reivindicações experimentais**.
+
+
+> Os resultados completos utilizados no artigo estão disponíveis no diretório: [`resultados-artigo`](./resultados-artigo/)
+
+---
+
+### Ambiente de Execução
+
+Os experimentos foram realizados em duas configurações de hardware:
+
+- **Máquina M1**
+  - AMD Ryzen 7 5800X 8-Core Processor
+  - Ubuntu 22.04.5 LTS
+  - 64 GB RAM
+
+- **Máquina M2**
+  - Intel(R) Core(TM) i7-9700
+  - Debian GNU/Linux 12
+  - 16 GB RAM
+
+---
+
+### Instalação e Preparação
+
+1. Clone o repositório:
+
 ```bash
 git clone https://github.com/PQC-PQS/BlockSignPQC.git
+cd BlockSignPQC
 ```
 
-Conceda permissão de execução para os scripts `install.sh` e `run.sh`.
+2. Dê permissão de execução ao script:
 ```bash
-chmod +x install.sh run.sh
+chmod +x install.sh
 ```
 
-Execute o comando abaixo para instalar os pré-requisitos.
+3. Instale os pré-requisitos:
+
 ```bash
 ./install.sh
 ```
 
-Execute os experimentos descritos no artigo com o comando:
+4. Ative o ambiente virtual:
 ```bash
-./run_experiment.sh
+source venv/bin/activate
 ```
 
->Os resultados completos dos experimentos utilizados no artigo estão disponíveis no diretório: [resultados-artigo](./resultados-artigo/)
+### Reivindicação 1 - Comparação de Desempenho entre os Algoritmos
+
+**Objetivo:** Avaliar os tempos de assinatura e verificação de diferentes algoritmos, considerando os níveis de segurança NIST 1, 3 e 5.
+ 
+**Comando:**
+```bash
+python main.py --sign \
+    ecdsa \
+    mldsa \
+    sphincs-sha-s \
+    sphincs-sha-f \
+    sphincs-shake-s \
+    sphincs-shake-f \
+    falcon \
+    mayo \
+    cross-rsdp-small \
+    cross-rsdpg-small \
+    cross-rsdp-balanced \
+    cross-rsdpg-balanced \
+    cross-rsdp-fast \
+    cross-rsdpg-fast \
+    --runs 10000 \
+    --warm-up 1000 \
+    --levels 1 3 5
+```
+
+**Configuração:**
+
+- Flags utilizadas: `--sign`, `--runs`, `--warm-up`, `--levels`.
+
+- Tempo estimado de execução: 5 a 6 horas, conforme máquinas M1 e M2.
+
+- Resultados gerados: arquivos CSV e gráficos no diretório `./results/`.
+
+
+### Reivindicação 2 - Avaliação do Impacto dos Algoritmos na Simulação Blockchain (BlockSim): 
+
+**Objetivo:** Simular o impacto dos algoritmos nos tempos de verificação de blocos em uma rede blockchain, utilizando o simulador BlockSim, considerando os níveis de segurança NIST 1, 3 e 5.
+
+**Comando:**
+```bash
+python main.py --sign \
+    ecdsa \
+    mldsa \
+    sphincs-sha-s \
+    sphincs-sha-f \
+    sphincs-shake-s \
+    sphincs-shake-f \
+    falcon \
+    mayo \
+    cross-rsdp-small \
+    cross-rsdpg-small \
+    cross-rsdp-balanced \
+    cross-rsdpg-balanced \
+    cross-rsdp-fast \
+    cross-rsdpg-fast \
+    --runs 10000 \
+    --warm-up 1000 \
+    --levels 1 3 5 \
+    --runs-simulator 1000
+```
+
+**Configuração:**
+
+- Flags utilizadas: `--runs-simulator`, além das anteriores.
+
+- Tempo estimado de execução: 9 a 10 horas, conforme máquinas M1 e M2.
+
+- Resultados gerados: arquivos CSV e gráficos no diretório `./results`.
+
 
 ## Publicação
 
