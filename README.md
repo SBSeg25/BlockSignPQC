@@ -2,8 +2,8 @@
 
 [Vídeo de demonstração](https://youtu.be/CNKmvOyZqm0)
 
-**BlockSignPQC** é um benchmark modular e extensível para avaliação de 
-algoritmos de assinatura digital pós-quântica (PQC) em sistemas blockchain.
+**BlockSignPQC** é um benchmark modular e extensível para a avaliação comparativa 
+de algoritmos de assinatura digital pós-quântica (PQC) em ambientes blockchain.                 
 Ele permite medições diretas de desempenho criptográfico e simulações realistas
 de redes blockchain por meio da integração com o simulador BlockSim.
 
@@ -27,7 +27,7 @@ de redes blockchain por meio da integração com o simulador BlockSim.
 
 - Comparar algoritmos clássicos (*e.g.* *ECDSA*) e pós-quânticos (*e.g.* *Dilithium*, *Falcon*, *SPHINCS+*).
 - Integrar novos algoritmos de forma contínua e modular.
-- Simular o impacto sistêmico dos algoritmos em ambientes blockchain.
+- Simular o impacto sistêmico dos algoritmos em redes blockchain.
 
 ## Estrutura da Ferramenta
 
@@ -66,6 +66,13 @@ BlockSignPQC/
 - [liboqs-python](https://github.com/open-quantum-safe/liboqs-python)
 
 ### Instalando Pré-requisitos:
+
+Clone este repositório.
+
+```bash
+git clone https://github.com/SBSeg25/BlockSignPQC.git
+cd BlockSignPQC
+```
 
 Conceda permissão de execução ao script de instalação usando o comando.
 ```bash
@@ -229,7 +236,7 @@ Os experimentos foram realizados em duas configurações de hardware:
 1. Clone o repositório:
 
 ```bash
-git clone https://github.com/PQC-PQS/BlockSignPQC.git
+git clone https://github.com/SBSeg25/BlockSignPQC.git
 cd BlockSignPQC
 ```
 
@@ -279,7 +286,7 @@ python main.py --sign \
 
 - Flags utilizadas: `--sign`, `--runs`, `--warm-up`, `--levels`.
 
-- Tempo estimado de execução: 5 a 6 horas, conforme máquinas M1 e M2.
+- Tempo estimado de execução: entre 5 a 7 horas, conforme máquinas M1 e M2.
 
 - Resultados gerados: arquivos CSV e gráficos no diretório `./results/`.
 
@@ -315,7 +322,7 @@ python main.py --sign \
 
 - Flags utilizadas: `--runs-simulator`, além das anteriores.
 
-- Tempo estimado de execução: 9 a 10 horas, conforme máquinas M1 e M2.
+- Tempo estimado de execução: entre 10 a 12 horas, conforme máquinas M1 e M2.
 
 - Resultados gerados: arquivos CSV e gráficos no diretório `./results`.
 
